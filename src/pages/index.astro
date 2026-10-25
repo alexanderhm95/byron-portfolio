@@ -1,0 +1,197 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { skills } from '../data/skills';
+
+const roles = [
+  {
+    company: 'NETTPLUS',
+    position: 'Líder Técnico / Arquitecto de Soluciones',
+    period: 'Oct 2024 - Presente',
+    detail: 'Diseño arquitecturas, desarrollo soluciones backend/frontend, acompaño despliegues y estandarizo procesos técnicos para operación, soporte y crecimiento.'
+  },
+  {
+    company: 'Universidad Nacional de Loja',
+    position: 'Ingeniero de Software',
+    period: 'Oct 2022 - Mar 2024',
+    detail: 'Desarrollé plataformas web y móviles, integré servicios y participé en soluciones de software con impacto social, coordinando arquitectura y entrega técnica.'
+  }
+];
+---
+
+<MainLayout
+  title="Byron Herrera — Ingeniero de software"
+  description="Portafolio personal de Byron Alexander Herrera Martínez: arquitectura de software, automatización con IA, redes e infraestructura. Fundador de TheMining-Devs Solutions."
+>
+  <header class="container-main flex items-center justify-between py-6">
+    <span class="font-heading font-bold">Byron Herrera</span>
+    <nav class="flex gap-4 text-sm text-[rgb(var(--muted))]">
+      <a class="hover:text-white" href="#proyectos">Proyectos</a>
+      <a class="hover:text-white" href="#experiencia">Experiencia</a>
+      <a class="hover:text-white" href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container-main py-10 sm:py-16">
+      <p class="eyebrow text-sm">Ingeniero de software</p>
+      <h1 class="font-heading mt-3 max-w-[18ch] text-[clamp(2.2rem,6vw,3.6rem)] font-bold leading-[1.05]">Construyo software, automatizaciones y sistemas en producción.</h1>
+      <p class="mt-5 max-w-[65ch] text-[rgb(var(--muted))] leading-relaxed">
+        Líder técnico en NETTPLUS y fundador de <a class="underline underline-offset-4 hover:text-white" href="https://themining-devs.es" target="_blank" rel="noreferrer">TheMining-Devs Solutions</a>. Trabajo en arquitectura de software, automatización con IA, redes e infraestructura para operaciones reales, no demos.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="https://github.com/alexanderhm95" target="_blank" rel="noreferrer">Ver GitHub</a>
+        <a class="btn btn-outline" href="#contacto">Hablemos</a>
+      </div>
+    </section>
+
+    <section id="proyectos" class="container-main section-spacing border-t border-[rgb(var(--line))]">
+      <p class="eyebrow text-sm">GitHub en vivo</p>
+      <h2 class="font-heading mt-2 text-2xl font-bold sm:text-3xl">Lo que hay en mis repositorios ahora mismo</h2>
+      <p class="mt-2 max-w-[60ch] text-[rgb(var(--muted))]">Estos datos se cargan en vivo desde la API pública de GitHub cada vez que visitas la página.</p>
+
+      <div id="gh-stats" class="mt-8 grid gap-4 sm:grid-cols-3" aria-live="polite">
+        <div class="card p-4">
+          <p class="text-2xl font-bold font-heading" data-gh="public_repos">—</p>
+          <p class="text-xs text-[rgb(var(--muted))]">Repositorios públicos</p>
+        </div>
+        <div class="card p-4">
+          <p class="text-2xl font-bold font-heading" data-gh="followers">—</p>
+          <p class="text-xs text-[rgb(var(--muted))]">Seguidores</p>
+        </div>
+        <div class="card p-4">
+          <p class="text-2xl font-bold font-heading" data-gh="stars">—</p>
+          <p class="text-xs text-[rgb(var(--muted))]">Estrellas recibidas</p>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <p class="text-xs font-semibold text-[rgb(var(--muted))]">Lenguajes más usados</p>
+        <ul id="gh-languages" class="mt-2 flex flex-wrap gap-2"></ul>
+      </div>
+
+      <div class="mt-8">
+        <p class="text-xs font-semibold text-[rgb(var(--muted))]">Repositorios destacados</p>
+        <ul id="gh-repos" class="mt-3 grid gap-3 sm:grid-cols-2"></ul>
+      </div>
+
+      <p id="gh-error" class="mt-4 hidden text-sm text-[rgb(var(--muted))]">
+        No se pudieron cargar los datos de GitHub en este momento (puede ser el límite de la API pública). <a class="underline" href="https://github.com/alexanderhm95" target="_blank" rel="noreferrer">Visítalo directo en GitHub</a>.
+      </p>
+    </section>
+
+    <section class="container-main section-spacing border-t border-[rgb(var(--line))]">
+      <p class="eyebrow text-sm">Capacidades técnicas</p>
+      <h2 class="font-heading mt-2 text-2xl font-bold sm:text-3xl">En qué trabajo</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {skills.map((group) => (
+          <div class="card p-4">
+            <h3 class="font-heading font-semibold">{group.category}</h3>
+            <ul class="mt-3 flex flex-wrap gap-2">
+              {group.items.map((item) => <li class="chip">{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="experiencia" class="container-main section-spacing border-t border-[rgb(var(--line))]">
+      <p class="eyebrow text-sm">Experiencia</p>
+      <h2 class="font-heading mt-2 text-2xl font-bold sm:text-3xl">Dónde he trabajado</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        {roles.map((role) => (
+          <div class="card p-5">
+            <p class="text-xs text-[rgb(var(--muted))]">{role.period}</p>
+            <h3 class="font-heading mt-2 font-semibold">{role.position}</h3>
+            <p class="text-sm text-[rgb(var(--muted))]">{role.company}</p>
+            <p class="mt-3 text-sm leading-relaxed text-[rgb(var(--muted))]">{role.detail}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="contacto" class="container-main section-spacing border-t border-[rgb(var(--line))]">
+      <p class="eyebrow text-sm">Contacto</p>
+      <h2 class="font-heading mt-2 text-2xl font-bold sm:text-3xl">Hablemos de tu próximo sistema</h2>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="mailto:byron.herrera@unl.edu.ec">Enviar un correo</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/byron-alexander-herrera-martinez-011329216/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn btn-outline" href="https://github.com/alexanderhm95" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container-main border-t border-[rgb(var(--line))] py-8 text-xs text-[rgb(var(--muted))]">
+    <p>© {new Date().getFullYear()} Byron Alexander Herrera Martínez · Fundador de <a class="underline" href="https://themining-devs.es">TheMining-Devs Solutions</a></p>
+  </footer>
+
+  <script>
+    const USERNAME = 'alexanderhm95';
+
+    async function loadGithub() {
+      try {
+        const [userRes, reposRes] = await Promise.all([
+          fetch(`https://api.github.com/users/${USERNAME}`),
+          fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=pushed`)
+        ]);
+
+        if (!userRes.ok || !reposRes.ok) throw new Error('github api error');
+
+        const user = await userRes.json();
+        const repos = await reposRes.json();
+
+        const stars = repos.reduce((sum, repo) => sum + (repo.stargazers_count ?? 0), 0);
+
+        setStat('public_repos', user.public_repos);
+        setStat('followers', user.followers);
+        setStat('stars', stars);
+
+        const languageCounts = {};
+        for (const repo of repos) {
+          if (repo.language) {
+            languageCounts[repo.language] = (languageCounts[repo.language] ?? 0) + 1;
+          }
+        }
+        const topLanguages = Object.entries(languageCounts)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 8)
+          .map(([name]) => name);
+
+        const languagesList = document.getElementById('gh-languages');
+        if (languagesList) {
+          languagesList.innerHTML = topLanguages
+            .map((lang) => `<li class="chip">${lang}</li>`)
+            .join('');
+        }
+
+        const topRepos = [...repos]
+          .filter((repo) => !repo.fork)
+          .sort((a, b) => b.stargazers_count - a.stargazers_count)
+          .slice(0, 4);
+
+        const reposList = document.getElementById('gh-repos');
+        if (reposList) {
+          reposList.innerHTML = topRepos
+            .map(
+              (repo) => `
+                <li class="card p-4">
+                  <a class="font-heading font-semibold hover:underline" href="${repo.html_url}" target="_blank" rel="noreferrer">${repo.name}</a>
+                  <p class="mt-1 text-sm text-[rgb(var(--muted))]">${repo.description ?? 'Sin descripción'}</p>
+                  <p class="mt-2 text-xs text-[rgb(var(--muted))]">★ ${repo.stargazers_count} · ${repo.language ?? '—'}</p>
+                </li>
+              `
+            )
+            .join('');
+        }
+      } catch (error) {
+        document.getElementById('gh-error')?.classList.remove('hidden');
+      }
+    }
+
+    function setStat(key, value) {
+      const el = document.querySelector(`[data-gh="${key}"]`);
+      if (el) el.textContent = String(value ?? '—');
+    }
+
+    loadGithub();
+  </script>
+</MainLayout>
